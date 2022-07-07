@@ -760,12 +760,6 @@
 
 
 <h1 id="snapshots">Snapshots</h1>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>You can find out more about snapshots in the library 
-<a href="https://patchlevel.github.io/event-sourcing-docs/latest/snapshots/">documentation</a>. 
-This documentation is limited to bundle integration.</p>
-</div>
 <p>Some aggregates can have a large number of events.
 This is not a problem if there are a few hundred.
 But if the number gets bigger at some point, then loading and rebuilding can become slow.
@@ -777,6 +771,12 @@ If a hit exists, the aggregate is built up with the help of the snapshot.
 A check is then made to see whether further events have existed since the snapshot
 and these are then also executed on the aggregate.
 Here, however, only the last events are loaded from the database and not all.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You can find out more about snapshots in the library 
+<a href="https://patchlevel.github.io/event-sourcing-docs/latest/snapshots/">documentation</a>. 
+This documentation is limited to bundle integration.</p>
+</div>
 <h2 id="using-symfony-cache">Using Symfony Cache</h2>
 <p>You can use symfony cache to define the target of the snapshot store.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">framework</span><span class="p">:</span><span class="w"></span>

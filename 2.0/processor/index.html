@@ -439,8 +439,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#priority-since-v12" class="md-nav__link">
-    Priority (since v1.2)
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    Priority
   </a>
   
 </li>
@@ -721,8 +728,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#priority-since-v12" class="md-nav__link">
-    Priority (since v1.2)
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    Priority
   </a>
   
 </li>
@@ -746,14 +760,15 @@
 
 
 <h1 id="processor">Processor</h1>
+<p>The <code>processor</code> is a kind of <a href="../event_bus/">event bus</a> listener that can execute actions on certain events.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can find out more about processor in the library 
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/processor/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
-<p>The <code>processor</code> is a kind of <a href="../event_bus/">event bus</a> listener that can execute actions on certain events.
-A process can be for example used to send an email when a guest is checked in:</p>
+<h2 id="usage">Usage</h2>
+<p>A process can be for example used to send an email when a guest is checked in:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">namespace</span> <span class="nx">App\Domain\Hotel\Listener</span><span class="p">;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">use</span> <span class="nx">App\Domain\Hotel\Event\GuestIsCheckedIn</span><span class="p">;</span>
@@ -795,7 +810,7 @@ Otherwise you have to define the processor in the symfony service file:</p>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">event_sourcing.processor</span><span class="w"></span>
 </code></pre></div>
-<h2 id="priority-since-v12">Priority (since v1.2)</h2>
+<h2 id="priority">Priority</h2>
 <p>You can also determine the <code>priority</code> in which the processors are executed. 
 The higher the priority, the earlier the processor is executed. 
 You have to add the tag manually and specify the priority.</p>

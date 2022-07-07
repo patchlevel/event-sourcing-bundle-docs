@@ -760,15 +760,15 @@
 
 
 <h1 id="event-bus">Event Bus</h1>
+<p>This library uses the core principle called <a href="https://martinfowler.com/articles/201701-event-driven.html">event bus</a>.</p>
+<p>For all events that are persisted (when the <code>save</code> method has been executed on the <a href="../repository/">repository</a>),
+the event will be dispatched to the <code>event bus</code>. All listeners are then called for each event.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can find out more about the event bus in the library 
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/event_bus/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
-<p>This library uses the core principle called <a href="https://martinfowler.com/articles/201701-event-driven.html">event bus</a>.</p>
-<p>For all events that are persisted (when the <code>save</code> method has been executed on the <a href="../repository/">repository</a>),
-the event will be dispatched to the <code>event bus</code>. All listeners are then called for each event.</p>
 <h2 id="symfony-event-bus">Symfony Event Bus</h2>
 <p>To use the <a href="https://symfony.com/doc/current/messenger.html">Symfony Messager</a>, 
 you have to define it in messenger.yaml.

@@ -645,6 +645,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Watch Server
@@ -661,6 +663,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -669,8 +673,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#watch-server" class="md-nav__link">
-    Watch Server
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#watch" class="md-nav__link">
+    Watch
   </a>
   
 </li>
@@ -707,6 +718,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -715,8 +728,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#watch-server" class="md-nav__link">
-    Watch Server
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#watch" class="md-nav__link">
+    Watch
   </a>
   
 </li>
@@ -739,17 +759,16 @@
 
 
 
-  <h1>Watch Server</h1>
-
-<h2 id="watch-server">Watch Server</h2>
+<h1 id="watch-server">Watch Server</h1>
+<p>There is also a watch server, because you can start to see all events in real time. </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can find out more about the watch server in the library 
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/watch_server/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
-<p>There is also a watch server, because you can start to see all events in real time. 
-To do this, you have to add the following configuration for the dev environment:</p>
+<h2 id="configuration">Configuration</h2>
+<p>To do this, you have to add the following configuration for the dev environment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">watch_server</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
@@ -758,6 +777,7 @@ To do this, you have to add the following configuration for the dev environment:
 <p class="admonition-title">Warning</p>
 <p>Use this configuration for dev purposes only!</p>
 </div>
+<h2 id="watch">Watch</h2>
 <p>There is then a new command to start the watch server:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bin/console event-sourcing:watch
 </code></pre></div>

@@ -746,16 +746,16 @@
 
 
 <h1 id="repository">Repository</h1>
+<p>A <code>repository</code> takes care of storing and loading the <code>aggregates</code>.
+The <a href="https://martinfowler.com/eaaCatalog/repository.html">design pattern</a> of the same name is also used.</p>
+<p>Every aggregate needs a repository to be stored.
+And each repository is only responsible for one aggregate.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can find out more about repository in the library 
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/repository/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
-<p>A <code>repository</code> takes care of storing and loading the <code>aggregates</code>.
-The <a href="https://martinfowler.com/eaaCatalog/repository.html">design pattern</a> of the same name is also used.</p>
-<p>Every aggregate needs a repository to be stored.
-And each repository is only responsible for one aggregate.</p>
 <h2 id="use-repositories">Use repositories</h2>
 <p>Every aggregate that has been defined and registered automatically has a repository.
 These repositories can also be auto-updated. 

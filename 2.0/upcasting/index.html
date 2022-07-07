@@ -520,9 +520,40 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Upcasting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Upcasting
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -683,6 +714,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -700,12 +746,44 @@
 
 
 <h1 id="upcasting">Upcasting</h1>
+<p>There are cases where the already have events in our stream but there is data missing or not in the right format for our
+new usecase. Normally you would need to create versioned events for this. This can lead to many versions of the same
+event which could lead to some chaos. To prevent this we offer <code>Upcaster</code>, which can operate on the payload before
+denormalizing to an event object. There you can change the event name and adjust the payload of the event.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can find out more about upcasting in the library 
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/upcasting/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
+<h2 id="usage">Usage</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">use</span> <span class="nx">Patchlevel\EventSourcing\Serializer\Upcast\Upcast</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">use</span> <span class="nx">Patchlevel\EventSourcing\Serializer\Upcast\Upcaster</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">ProfileCreatedEmailLowerCastUpcaster</span> <span class="k">implements</span> <span class="nx">Upcaster</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">Upcast</span> <span class="nv">$upcast</span><span class="p">)</span><span class="o">:</span> <span class="nx">Upcast</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="c1">// ignore if other event is processed</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$upcast</span><span class="o">-&gt;</span><span class="na">eventName</span> <span class="o">!==</span> <span class="s1">&#39;profile_created&#39;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="k">return</span> <span class="nv">$upcast</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="nv">$payload</span> <span class="o">=</span> <span class="nv">$upcast</span><span class="o">-&gt;</span><span class="na">payload</span><span class="p">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="nv">$payload</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$payload</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]);</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>         <span class="k">return</span> <span class="k">new</span> <span class="nx">Upcast</span><span class="p">(</span><span class="nv">$upcast</span><span class="o">-&gt;</span><span class="na">eventName</span><span class="p">,</span> <span class="nv">$payload</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="p">}</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
+</code></pre></div>
+<p>If you have the symfony default service setting with <code>autowire</code>and <code>autoconfigure</code> enabled,
+the upcaster is automatically recognized and registered at the <code>Upcaster</code> interface.
+Otherwise you have to define the upcaster in the symfony service file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">App\Upcaster\ProfileCreatedEmailLowerCastUpcaster</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">event_sourcing.upcaster</span><span class="w"></span>
+</code></pre></div>
 
               
             </article>

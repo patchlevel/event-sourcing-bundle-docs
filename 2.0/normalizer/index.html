@@ -492,9 +492,53 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Normalizer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Normalizer
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-normalizer" class="md-nav__link">
+    Built-in Normalizer
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Normalizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    Uuid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -683,6 +727,34 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-normalizer" class="md-nav__link">
+    Built-in Normalizer
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Normalizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    Uuid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -700,12 +772,34 @@
 
 
 <h1 id="normalizer">Normalizer</h1>
+<p>Sometimes you also want to add more complex data in events as payload or in aggregates for the snapshots. 
+For example DateTime, enums or value objects. You can do that too. 
+However, you must define a normalizer for this so that the library knows how to write this data to the database 
+and load it again.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can find out more about normalizer in the library 
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/normalizer/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
+<h2 id="built-in-normalizer">Built-in Normalizer</h2>
+<p>This bundle adds more Symfony specific normalizers in addition to the existing built-in normalizers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find the other build-in normalizers <a href="https://patchlevel.github.io/event-sourcing-docs/latest/normalizer/#built-in-normalizer">here</a></p>
+</div>
+<h3 id="uuid">Uuid</h3>
+<p>With the <code>Uuid</code> Normalizer, as the name suggests, you can convert Symfony Uuid objects to a string and back again.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">use</span> <span class="nx">Patchlevel\EventSourcing\Attribute\Normalize</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">use</span> <span class="nx">Patchlevel\EventSourcingBundle\Normalizer\UuidNormalizer</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">use</span> <span class="nx">Symfony\Component\Uid\Uuid</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">DTO</span> 
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="c1">#[Normalize(new UuidNormalizer())]</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">public</span> <span class="nx">Uuid</span> <span class="nv">$id</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+</code></pre></div>
 
               
             </article>
