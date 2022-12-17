@@ -478,6 +478,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#merge-orm-schema" class="md-nav__link">
+    Merge ORM Schema
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -849,6 +856,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#merge-orm-schema" class="md-nav__link">
+    Merge ORM Schema
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -927,8 +941,8 @@ you can also define the connection via doctrine and then use it in the store.</p
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You should avoid that this connection or database is used by other tools or libraries.
-Create for e.g. doctrine orm its own database and connection.</p>
+<p>If you want to use the same connection as doctrine orm, then you have to set the flag <code>merge_orm_schema</code>. 
+Otherwise you should avoid using the same connection as other tools.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -952,6 +966,21 @@ for creating and executing migrations.</p>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EventSourcingMigrations</span><span class="w"></span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%kernel.project_dir%/migrations&quot;</span><span class="w"></span>
 </code></pre></div>
+<h2 id="merge-orm-schema">Merge ORM Schema</h2>
+<p>You can also merge the schema with doctrine orm. You have to set the following flag for this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nt">store</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">        </span><span class="nt">merge_orm_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All schema relevant commands are removed if you activate this option. You should use the doctrine commands then.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you want to merge the schema, then the same doctrine connection must be used as with the doctrine orm. 
+Otherwise errors may occur!</p>
+</div>
 
               
             </article>
