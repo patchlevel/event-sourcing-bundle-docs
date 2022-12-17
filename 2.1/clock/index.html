@@ -587,8 +587,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psr-20" class="md-nav__link">
+    PSR-20
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symfony-clock" class="md-nav__link">
+    Symfony Clock
   </a>
   
 </li>
@@ -721,8 +735,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psr-20" class="md-nav__link">
+    PSR-20
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symfony-clock" class="md-nav__link">
+    Symfony Clock
   </a>
   
 </li>
@@ -754,8 +782,8 @@ There is a system clock and a frozen clock for test purposes.</p>
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/clock/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
-<h2 id="configuration">Configuration</h2>
-<p>You can freeze time for your tests as follows:</p>
+<h2 id="testing">Testing</h2>
+<p>You can freeze the clock for testing purposes:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">when@test</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">clock</span><span class="p">:</span><span class="w"></span>
@@ -765,6 +793,23 @@ This documentation is limited to bundle integration.</p>
 <p class="admonition-title">Note</p>
 <p>If freeze is not set, then the system clock is used.</p>
 </div>
+<h2 id="psr-20">PSR-20</h2>
+<p>You can also use your own implementation of your choice. 
+They only have to implement the interface of the <a href="https://www.php-fig.org/psr/psr-20/">psr-20</a>. 
+You can then specify this service here:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">clock</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;my_own_clock_service&#39;</span><span class="w"></span>
+</code></pre></div>
+<h2 id="symfony-clock">Symfony Clock</h2>
+<p>Since symfony 6.2 there is a <a href="https://symfony.com/doc/current/components/clock.html">clock</a> implementation 
+based on psr-20 that you can use.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>composer require symfony/clock
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">clock</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;clock&#39;</span><span class="w"></span>
+</code></pre></div>
 
               
             </article>
