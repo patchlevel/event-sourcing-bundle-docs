@@ -514,20 +514,68 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#event-bus-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Bus Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Bus Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patchlevel-default-event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patchlevel (Default) Event Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#symfony-event-bus" class="md-nav__link">
     <span class="md-ellipsis">
       Symfony Event Bus
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Symfony Event Bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#command-bus" class="md-nav__link">
     <span class="md-ellipsis">
       Command Bus
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psr-14-event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSR-14 Event Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Event Bus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -921,20 +969,68 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#event-bus-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Bus Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Bus Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patchlevel-default-event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patchlevel (Default) Event Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#symfony-event-bus" class="md-nav__link">
     <span class="md-ellipsis">
       Symfony Event Bus
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Symfony Event Bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#command-bus" class="md-nav__link">
     <span class="md-ellipsis">
       Command Bus
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psr-14-event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSR-14 Event Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Event Bus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -966,38 +1062,97 @@ the event will be dispatched to the <code>event bus</code>. All listeners are th
 <a href="https://patchlevel.github.io/event-sourcing-docs/latest/event_bus/">documentation</a>. 
 This documentation is limited to bundle integration.</p>
 </div>
-<h2 id="symfony-event-bus">Symfony Event Bus</h2>
-<p>To use the <a href="https://symfony.com/doc/current/messenger.html">Symfony Messager</a>, 
-you have to define it in messenger.yaml.
-It's best to call the bus "event.bus".
-An event bus can have 0 or n listener for an event. 
-So "allow_no_handlers" has to be configured.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">framework</span><span class="p">:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">messenger</span><span class="p">:</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">buses</span><span class="p">:</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">            </span><span class="nt">event.bus</span><span class="p">:</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                </span><span class="nt">default_middleware</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_no_handlers</span>
+<h2 id="event-bus-types">Event Bus Types</h2>
+<p>We supply our own event bus, but also have the option of replacing the event bus with an implementation. 
+We offer various options for this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We recommend using the default event bus for better integration.</p>
+</div>
+<h3 id="patchlevel-default-event-bus">Patchlevel (Default) Event Bus</h3>
+<p>First of all we have our own default event bus. 
+This works best with the library, as the <code>#[Subscribe]</code> attribute is used there, among other things.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">event_bus</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
-<p>We can then use this message or event bus in event sourcing:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">event_bus</span><span class="p">:</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">event.bus</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You don't have to specify this as it is the default value.</p>
+</div>
+<h3 id="symfony-event-bus">Symfony Event Bus</h3>
+<p>But you can also use <a href="https://symfony.com/doc/current/messenger.html">Symfony Messenger</a>. 
+To do this, you first have to define a suitable message bus. 
+This must be "allow_no_handlers" so that this messenger can be an event bus according to the definition.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># messenger.yaml</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">framework</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">messenger</span><span class="p">:</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="nt">buses</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="nt">event.bus</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">                </span><span class="nt">default_middleware</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_no_handlers</span>
 </code></pre></div>
-<h2 id="command-bus">Command Bus</h2>
+<p>We can then use this messenger or event bus in event sourcing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">event_bus</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">event.bus</span>
+</code></pre></div>
+<p>Since the event bus was replaced, event sourcing's own attributes no longer work. 
+You use the Symfony attributes instead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">use</span> <span class="nx">Patchlevel\EventSourcing\EventBus\Message</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">use</span> <span class="nx">Symfony\Component\Messenger\Attribute\AsMessageHandler</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">#[</span><span class="nd">AsMessageHandler</span><span class="p">(</span><span class="s1">&#39;event.bus&#39;</span><span class="p">)]</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">class</span> <span class="nc">SmsNotificationHandler</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">Message</span> <span class="nv">$message</span><span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$message</span> <span class="nx">instanceof</span> <span class="nx">GuestIsCheckedIn</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>            <span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="c1">// ... do some work - like sending an SMS message!</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="command-bus">Command Bus</h4>
 <p>If you use a command bus or cqrs as a pattern, then you should define a new message bus. 
 The whole thing can look like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">framework</span><span class="p">:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">messenger</span><span class="p">:</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nt">default_bus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">command.bus</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nt">buses</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">            </span><span class="nt">command.bus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">            </span><span class="nt">event.bus</span><span class="p">:</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                </span><span class="nt">default_middleware</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_no_handlers</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">framework</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">messenger</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nt">default_bus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">command.bus</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nt">buses</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="nt">command.bus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="nt">event.bus</span><span class="p">:</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">                </span><span class="nt">default_middleware</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_no_handlers</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>You should deactivate the autoconfigure feature for the handlers, 
-otherwise they will be registered in both handlers.</p>
+otherwise they will be registered in both messenger.</p>
+</div>
+<h3 id="psr-14-event-bus">PSR-14 Event Bus</h3>
+<p>You can also use any other event bus that implements the <a href="https://www.php-fig.org/psr/psr-14/">PSR-14</a> standard.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">event_bus</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psr14</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my.event.bus.service</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like the Symfony event bus, the event sourcing attributes no longer work here.
+You have to use the system that comes with the respective psr14 implementation.</p>
+</div>
+<h3 id="custom-event-bus">Custom Event Bus</h3>
+<p>You can also use your own event bus that implements the <code>Patchlevel\EventSourcing\EventBus\EventBus</code> interface.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">patchlevel_event_sourcing</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nt">event_bus</span><span class="p">:</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my.event.bus.service</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like the Symfony event bus, the event sourcing attributes no longer work here.
+You have to use the system that comes with the respective custom implementation.</p>
 </div>
 
 
