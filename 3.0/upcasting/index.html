@@ -14,7 +14,7 @@
         <link rel="prev" href="../snapshots/">
       
       
-        <link rel="next" href="../pipeline/">
+        <link rel="next" href="../message_decorator/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -706,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pipeline/" class="md-nav__link">
+      <a href="../pipeline.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -867,12 +867,9 @@ This documentation is limited to bundle integration.</p>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="k">return</span> <span class="nv">$upcast</span><span class="p">;</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">}</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="nv">$payload</span> <span class="o">=</span> <span class="nv">$upcast</span><span class="o">-&gt;</span><span class="na">payload</span><span class="p">;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="nv">$payload</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$payload</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]);</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>         <span class="k">return</span> <span class="k">new</span> <span class="nx">Upcast</span><span class="p">(</span><span class="nv">$upcast</span><span class="o">-&gt;</span><span class="na">eventName</span><span class="p">,</span> <span class="nv">$payload</span><span class="p">)</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="p">}</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="k">return</span> <span class="nv">$upcast</span><span class="o">-&gt;</span><span class="na">replacePayloadByKey</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$upcast</span><span class="o">-&gt;</span><span class="na">payload</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]));</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
 </code></pre></div>
 <p>If you have the symfony default service setting with <code>autowire</code>and <code>autoconfigure</code> enabled,
 the upcaster is automatically recognized and registered at the <code>Upcaster</code> interface.

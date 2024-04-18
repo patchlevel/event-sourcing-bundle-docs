@@ -51,11 +51,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/3.0/pipeline/</loc>
-         <lastmod>2024-04-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/3.0/processor/</loc>
          <lastmod>2024-04-18</lastmod>
          <changefreq>daily</changefreq>
