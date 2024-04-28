@@ -1278,6 +1278,10 @@ This is useful for development, so you don't have to setup the subscription engi
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nt">subscription</span><span class="p">:</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="nt">auto_setup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This works only before each http requests and not if you use the console commands.</p>
+</div>
 <h3 id="rebuild-after-file-change">Rebuild After File Change</h3>
 <p>If you want to rebuild the subscription engine after a file change, you can activate this option.
 This is also useful for development, so you don't have to rebuild the projections manually.</p>
@@ -1285,6 +1289,10 @@ This is also useful for development, so you don't have to rebuild the projection
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nt">subscription</span><span class="p">:</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">        </span><span class="nt">rebuild_after_file_change</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This works only before each http requests and not if you use the console commands.</p>
+</div>
 <h2 id="event-bus">Event Bus</h2>
 <p>You can enable the event bus to listen for events and messages synchronously.
 But you should consider using the subscription engine for this.</p>
