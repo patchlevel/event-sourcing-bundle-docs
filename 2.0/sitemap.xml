@@ -1,98 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/aggregate/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/aggregate/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/cli/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/cli/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/clock/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/clock/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/event_bus/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/event_bus/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/events/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/events/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/getting_started/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/getting_started/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/installation/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/installation/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/message_decorator/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/message_decorator/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/migration/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/migration/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/normalizer/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/normalizer/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/pipeline/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/pipeline/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/processor/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/processor/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/projection/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/projection/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/repository/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/repository/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/snapshots/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/snapshots/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/store/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/store/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/upcasting/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/upcasting/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/2.0/watch_server/</loc>
-         <lastmod>2023-05-22</lastmod>
+         <loc>https://patchlevel.github.io/event-sourcing-bundle-docs/latest/watch_server/</loc>
+         <lastmod>2024-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
