@@ -401,6 +401,24 @@ You're not viewing the latest version.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#database-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database with Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symfony-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symfony CLI
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -695,6 +713,24 @@ You're not viewing the latest version.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#database-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database with Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symfony-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symfony CLI
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -759,12 +795,43 @@ then you have to carry out a few installation steps by hand.</p>
 </code></pre></div>
 <h2 id="dotenv">Dotenv</h2>
 <p>Finally, we have to fill the ENV variable with a connection url.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>EVENTSTORE_URL=pdo-pgsql://user:secret@localhost/app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>EVENTSTORE_URL=&quot;pdo-pgsql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&amp;charset=utf8&quot;
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can find out more about what a connection url looks like <a href="https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url">here</a>.</p>
 </div>
+<h2 id="database-with-docker">Database with Docker</h2>
+<p>If you are using docker, you can use the following <code>compose.yaml</code> file to start a postgres database.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">eventstore</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:${POSTGRES_VERSION:-16}-alpine</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_DB:-app}</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span><span class="c1"># You should definitely change the password in production</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_PASSWORD:-!ChangeMe!}</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_USER:-app}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eventstore_data:/var/lib/postgresql/data:rw</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">      </span><span class="c1"># You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">      </span><span class="c1"># - ./docker/db/data:/var/lib/postgresql/data:rw</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="nt">eventstore_data</span><span class="p">:</span>
+</code></pre></div>
+<p>And for development, you can add a <code>compose.override.yaml</code> file to expose the port.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">eventstore</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5432&quot;</span>
+</code></pre></div>
+<h2 id="symfony-cli">Symfony CLI</h2>
+<p>If you are using the <a href="https://symfony.com/download">symfony cli</a>, 
+you can configure that the database is started automatically if you start the server.
+For this you have to add the following configuration to the <code>.symfony.local.yaml</code> file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">workers</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">docker_compose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~</span>
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>You have successfully installed the bundle. Now you can start with the <a href="../getting_started/">quickstart</a> to get a feeling for the bundle.</p>
